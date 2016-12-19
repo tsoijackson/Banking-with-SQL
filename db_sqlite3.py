@@ -15,7 +15,13 @@ def data_entry(ID: str, last: str, first: str, amt: float):
 	cursor.close()
 	conn.close()
 
+def fetchall():
+	return cursor.execute("SELECT * FROM bank_db ORDER BY ID")
 
+def remove_row(ID: str):
+	string_command = "DELETE FROM bank_db WHERE id = " + ID
+	cursor.execute(string_command)
+	conn.commit()
 
 def main():
         conn = sqlite3.connect('bank.db')

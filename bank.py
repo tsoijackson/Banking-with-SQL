@@ -7,6 +7,37 @@ def generate_id():
 		id += str(random.randint(0,9))
 	return id
 
+def main_menu_input():
+	i = input()
+	i = i[0]
+	if i.isalpha():
+		if i.upper() == "A":
+			add_client()
+		elif i.upper() == "B":
+			pass
+		elif i.upper() == "Q":
+			return False
+	else:
+		print("Please choose a letter.")
+
+def search_input():
+	i = input
+	i = i[0]
+	if i.isalpha():
+		if i.upper() == "A":
+			pass
+		elif i.upper() == "B":
+			pass
+		else:
+			print("Please choose an option from the menu.")
+	else:
+		print("Please enter letters ONLY.")
+
+def search_options_input():
+	i = input
+	i = i[0]
+
+
 def add_client():
 	while True:
 		first = input("Please enter the FIRST name.")
@@ -33,18 +64,30 @@ def add_client():
 
 	db_sqlite3.data_entry(str(generate_id()), first, last, amt)
 
-def delete_client():
-	pass
+	print("CLIENT ADDED")
+
+def delete_client(ID: str):
+	messages.print_search()
+
+	db_sqlite3.remove_row(ID)
 
 def list_all_clients():
-	pass
+	for row in db_sqlite3.fetchall():
+		print(row)
 
 
 def main():
-	pass
+	messages.print_welcome()
+	messages.print_main_menu()
+	main_menu_input()
 
-print("Hellooo")
-print(add_client())
+
+
+	messages.print_farewell()
+
+def main2():
+	delete_client("11111")
+
 
 if __name__ == '__main__':
-	main()
+	main2()
