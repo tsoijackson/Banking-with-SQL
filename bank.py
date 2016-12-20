@@ -7,22 +7,30 @@ def generate_id():
 		id += str(random.randint(0,9))
 	return id
 
+def first_input():
+	return input()[0]
+
 def main_menu_input():
-	i = input()
-	i = i[0]
+	i = first_input()
 	if i.isalpha():
 		if i.upper() == "A":
 			add_client()
 		elif i.upper() == "B":
+			delete_client()
+		elif i.upper() == "C":
 			pass
+		elif i.upper() == "D":
+			list_all_clients()
+			return None
+		elif i.upper() == "E":
+			remove_all_clients()
 		elif i.upper() == "Q":
 			return False
 	else:
 		print("Please choose a letter.")
 
 def search_input():
-	i = input
-	i = i[0]
+	i = first_input()
 	if i.isalpha():
 		if i.upper() == "A":
 			pass
@@ -34,8 +42,7 @@ def search_input():
 		print("Please enter letters ONLY.")
 
 def search_options_input():
-	i = input
-	i = i[0]
+	i = first_input()
 
 
 def add_client():
@@ -68,18 +75,28 @@ def add_client():
 
 def delete_client(ID: str):
 	messages.print_search()
-
 	db_sqlite3.remove_row(ID)
+
+def ask_client_ID():
+	return input()
+
 
 def list_all_clients():
 	for row in db_sqlite3.fetchall():
 		print(row)
 
+def remove_all_clients():
+	print("Removing all clients...")
+	db_sqlite3.remove_all_rows()
+	print("All clients removed.")
+
 
 def main():
 	messages.print_welcome()
-	messages.print_main_menu()
-	main_menu_input()
+	while True:
+		messages.print_main_menu()
+		if main_menu_input() == False:
+			break
 
 
 
@@ -90,4 +107,4 @@ def main2():
 
 
 if __name__ == '__main__':
-	main2()
+	main()

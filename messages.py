@@ -9,15 +9,19 @@ def print_farewell():
 	print("Goodbye and have a nice day! Come again soon!")
 
 def print_main_menu():
+	print()
 	message = """----------MAIN MENU----------
 A. Add client
 B. Delete client
 C. Change client information
+D. List all clients
+E. Remove all clients
 Q. Quit
 """
 	print(message)
 
 def print_client_menu():
+	print()
 	message = """----------CLIENT MENU----------
 A. Deposit money
 B. Retrieve money
@@ -41,5 +45,11 @@ C. Add first name to the search
 """
 	print(message)
 
+def print_enter_ID():
+	print("Please enter client ID or 'Q' in order to return to the menu.")
+
 def print_letter_ONLY():
 	print("Please enter letters ONLY.")
+
+def print_choose_letter():
+	print("")
