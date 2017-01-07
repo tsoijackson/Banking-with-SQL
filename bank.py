@@ -44,7 +44,6 @@ def search_input():
 def search_options_input():
 	i = first_input()
 
-
 def add_client():
 	while True:
 		first = input("Please enter the FIRST name.")
@@ -73,17 +72,26 @@ def add_client():
 
 	print("CLIENT ADDED")
 
-def delete_client(ID: str):
+def delete_client():
 	messages.print_search()
-	db_sqlite3.remove_row(ID)
+	i = input()
+	if i.upper() == "A":
+		db_sqlite3.remove_row(i)
+		print("Client deleted.")
+	elif i.upper()  == "Q":
+		pass
 
 def ask_client_ID():
 	return input()
 
 
 def list_all_clients():
+	empty = False
 	for row in db_sqlite3.fetchall():
+		empty = True
 		print(row)
+	if empty  == False:
+		print("No one in the database.")
 
 def remove_all_clients():
 	print("Removing all clients...")

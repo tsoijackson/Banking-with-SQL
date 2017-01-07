@@ -11,6 +11,7 @@ def create_table():
 	cursor.execute('CREATE TABLE IF NOT EXISTS bank_db(id TEXT, last TEXT, first Text, amt REAL)')
 
 def data_entry(ID: str, last: str, first: str, amt: float):
+	create_table()
 	data = str((ID, last, first, amt))
 	string_command = "INSERT INTO bank_db VALUES " + data
 	cursor.execute(string_command)
@@ -22,6 +23,7 @@ def fetch_amt(ID: str):
 		return i[0]
 
 def fetchall():
+	create_table()
 	return cursor.execute("SELECT * FROM bank_db ORDER BY ID")
 
 def remove_row(ID: str):
@@ -30,7 +32,10 @@ def remove_row(ID: str):
 	conn.commit()
 
 def remove_all_rows():
-	cursor.execute("DROP TABLE bank_db")
+	try:
+		cursor.execute("DROP TABLE bank_db")
+	except:
+		pass
 
 
 def add_amt(ID: str, amt: float):
