@@ -34,14 +34,7 @@ def print_search():
 	message  = """----------OPTIONS----------
 A. Enter Id (6 digits)
 B. Search by last name
-"""
-	print(message)
-
-def print_search_options():
-	message = """----------OPTIONS----------
-A. Enter Id (6 digits)
-B. New search by last name
-C. Add first name to the search
+Q. Quit
 """
 	print(message)
 
